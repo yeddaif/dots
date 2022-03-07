@@ -1,0 +1,13 @@
+#!/bin/bash
+xrandr -s 1366x768
+setxkbmap fr
+$home/.fehbg
+for cmd in {polybar, dunst , mpd , picom , lxpolkit}
+do
+    killall $cmd
+done
+$home/.config/polybar/launch.sh &
+dunst &
+mpd &
+lxpolkit &
+picom --config ~/.config/picom/picom.conf &
